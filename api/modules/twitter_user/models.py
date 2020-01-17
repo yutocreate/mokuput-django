@@ -3,7 +3,7 @@ from django.utils import timezone
 
 # Create your models here.
 class TwitterUser(models.Model):
-  id = models.BigIntegerField('id', blank=True, default=0)
+  twitter_user_id = models.BigIntegerField('id', blank=True, default=0)
   id_str = models.TextField('id_str', blank=True)
   name = models.CharField('name', max_length=255, blank=True)
   screen_name = models.CharField('screen_name', max_length=255, blank=True)
@@ -18,4 +18,4 @@ class TwitterUser(models.Model):
   statuses_count = models.IntegerField('statuses_count', blank=True, default=0)
   created_at = models.DateTimeField("date", default=timezone.now)
   def __str__(self):
-    return self.id
+    return self.twitter_user_id

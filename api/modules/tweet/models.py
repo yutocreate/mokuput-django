@@ -5,7 +5,7 @@ from django.utils import timezone
 # Create your models here.
 class Tweet(models.Model):
   created_at = models.DateTimeField("date", default=timezone.now)
-  id = models.BigIntegerField('id', blank=True, default=0)
+  tweet_id = models.BigIntegerField('id', blank=True, default=0)
   twitter_user = models.ForeignKey(TwitterUser, on_delete=models.CASCADE)
   id_str = models.TextField('id_str', blank=True)
   snippet = models.TextField('snippet', blank=True)
@@ -33,4 +33,4 @@ class Tweet(models.Model):
   lang = models.TextField('lang', blank=True)
   tag = models.TextField('tag', blank=True)
   def __str__(self):
-    return self.id
+    return self.tweet_id

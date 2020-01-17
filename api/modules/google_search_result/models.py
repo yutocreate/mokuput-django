@@ -3,7 +3,7 @@ from django.utils import timezone
 
 # Create your models here.
 class GoogleSearchResult(models.Model):
-  id = models.CharField('id', max_length=255)
+  google_search_result_id = models.CharField('id', max_length=255)
   search_engin_id = models.CharField('engin-id', max_length=255, blank=True)
   search_date = models.DateTimeField("date", default=timezone.now)
   title = models.CharField('title', max_length=255, blank=True)
@@ -16,4 +16,4 @@ class GoogleSearchResult(models.Model):
   output_encoding = models.IntegerField('total-results', blank=True, default=0)
 
   def __str__(self):
-    return self.id
+    return self.google_search_result_id

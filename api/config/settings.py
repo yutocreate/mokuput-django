@@ -37,14 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'modules.association.apps.CmsConfig',
-    'modules.google_search_item.apps.CmsConfig',
-    'modules.google_search_item_page.apps.CmsConfig',
-    'modules.google_search_result.apps.CmsConfig',
-    'modules.twitter_user.apps.CmsConfig',
-    'modules.twitter_follower.apps.CmsConfig',
-    'modules.twitter_friend.apps.CmsConfig',
-    'modules.tweet.apps.CmsConfig',
+    'modules.association.apps.AssociationConfig',
+    'modules.google_search_item.apps.GoogleSearchItemConfig',
+    'modules.google_search_item_page.GoogleSearchItemPageConfig',
+    'modules.google_search_result.GoogleSearchResultConfig',
+    'modules.twitter_user.apps.TwitterUserConfig',
+    'modules.twitter_follower.apps.TwitterFollowerConfig',
+    'modules.twitter_friend.apps.TwitterFriendConfig',
+    'modules.tweet.apps.TweetConfig',
 ]
 
 MIDDLEWARE = [

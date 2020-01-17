@@ -3,7 +3,7 @@ from ..google_search_result.models import GoogleSearchResult
 
 # Create your models here.
 class GoogleSearchItem(models.Model):
-  id = models.IntegerField('id', blank=True, default=0)
+  google_search_item_id = models.IntegerField('id', blank=True, default=0)
   google_search_result = models.ForeignKey(GoogleSearchResult, on_delete=models.CASCADE)
   title = models.TextField('title', blank=True)
   html_title = models.TextField('html_title', blank=True)
@@ -15,4 +15,4 @@ class GoogleSearchItem(models.Model):
   html_formatted_url = models.URLField('html_formatted_url', max_length=200, blank=True)
 
   def __str__(self):
-    return self.id
+    return self.google_search_item_id
