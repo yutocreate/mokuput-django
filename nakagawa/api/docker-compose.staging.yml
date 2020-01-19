@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  api:
+    build: .
+    command: bash -lc ". ./initialization.sh"
+    volumes:
+      - .:/api
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    tty: true
+    stdin_open: true
+    environment:
+      LC_CTYPE: 'C.UTF-8'
+      LA_DB_NAME: 'dev_x'
+      LA_DB_USER: 'dev_x_user'
+      LA_DB_PASS: 'dev_x_pass'
+      LA_DB_HOST: 'db'
+      LA_DB_PORT: '3306'
+      API_ROOT: '/api'
+  db:
+    image: mysql:5.7
+    hostname: mysql
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - mysql-db:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_DATABASE: 'dev_x'
+      MYSQL_USER: 'dev_x_user'
+      MYSQL_PASSWORD: 'dev_x_pass'
+      MYSQL_ROOT_PASSWORD: 'root'
+
+volumes:
+  mysql-db:
+
