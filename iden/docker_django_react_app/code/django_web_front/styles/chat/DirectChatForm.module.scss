@@ -1,0 +1,89 @@
+.message_container {
+  display: flex;
+  justify-content: center;
+}
+
+.message_form {
+  position: fixed;
+  display: grid;
+  grid-template-columns: 1fr 1fr 16fr 2fr;
+  justify-content: center;
+  bottom: 16px;
+  min-height: 60px;
+  align-items: center;
+  .image_container {
+    margin-left: auto;
+    width: 40px;
+  }
+
+  .emojiIcon_wrapper {
+    width: 100%;
+    margin-left: 6px;
+
+    .emojiIcon {
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  .input {
+    width: 100%;
+    padding: 6px 12px 0;
+    border-radius: 8px;
+    border-color: rgb(107, 201, 251);
+  }
+
+  .send_wrapper {
+    border: none;
+    background-color: white;
+    padding: 0;
+  }
+
+  .sendButton {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.subText {
+  position: relative;
+  top: 98px;
+  left: 60px;
+  bottom: 0;
+  font-size: 11px;
+  font-weight: 300;
+}
+
+.subText2 {
+  position: relative;
+  top: 98px;
+  left: 80px;
+  bottom: 0;
+  font-size: 10px;
+  font-weight: 300;
+}
+
+.emoji {
+  position: absolute;
+  z-index: 10;
+  width: 280px;
+  height: 320px;
+  bottom: 120px;
+  right: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+@media screen and (max-width: 380px) {
+  .subText {
+    display: none;
+  }
+
+  .subText2 {
+    display: none;
+  }
+}

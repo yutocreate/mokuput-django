@@ -1,0 +1,68 @@
+.app_title1 {
+  margin: 84px;
+  margin-bottom: 36px;
+  text-align: center;
+  line-height: 1.2;
+  font-weight: 700;
+  color: white;
+  background: rgba(45, 140, 255, 0.6);
+  padding: 16px 24px;
+  border-radius: 16px;
+  font-family: sans-serif;
+  height: 100%;
+}
+
+.form_wrapper {
+  margin: 0 auto 16px;
+  background: url("../../img/desk-1220052_960_720.webp") no-repeat;
+  height: 400px;
+  width: 80%;
+  object-fit: cover;
+  background-size: cover;
+  border-radius: 16px;
+
+  h2 {
+    display: relative;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    padding-top: 100px;
+  }
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.input_mail {
+  background-color: white;
+}
+
+.input_password {
+  background-color: white;
+}
+
+.button_wrapper {
+  text-align: center;
+}
+
+.button {
+  background-color: white;
+  padding: 10px 24px;
+  margin-bottom: 30px;
+  color: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.signup {
+  padding: 8px 16px;
+  margin-left: 60px;
+  color: white;
+  border-radius: 8px;
+  background: rgba(45, 140, 255, 0.6);
+}
