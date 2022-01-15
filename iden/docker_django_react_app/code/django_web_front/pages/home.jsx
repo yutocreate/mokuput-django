@@ -34,9 +34,9 @@ const Home = () => {
     //   });
     //   setChannels(names);
     // });
-    // axios.get("http://localhost:8000/channel/").then((res) => {
-    //   setChannels(res.data);
-    // });
+    axios.get("http://localhost:8000/channel/").then((res) => {
+      setChannels(res.data);
+    });
   }, []);
 
   const onSearch = async (e) => {

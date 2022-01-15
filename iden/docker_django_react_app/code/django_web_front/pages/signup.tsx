@@ -72,11 +72,11 @@ const Signup = () => {
     //   isOnline: true,
     //   password: password,
     // });
-    // axios.post("http://localhost:8000/admin/webapi/profile/", {
-    //   email: email,
-    //   isOnline: true,
-    //   password: password,
-    // });
+    axios.post("http://localhost:8000/admin/webapi/profile/", {
+      email: email,
+      isOnline: true,
+      password: password,
+    });
     //サインアップしたユーザーが入れば、ユーザー詳細ページに飛ばす
     // Router.push(`/signup/${newUserId}`);
   };

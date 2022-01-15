@@ -13,6 +13,7 @@ interface Props {
 const Channel: React.FC<Props> = (props) => {
   const { channel, selectedChannel } = props;
 
+  console.log(channel);
   return (
     <>
       <div
