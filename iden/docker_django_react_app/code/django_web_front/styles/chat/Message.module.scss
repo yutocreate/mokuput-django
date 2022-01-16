@@ -1,0 +1,70 @@
+.message_wrapper {
+  margin-top: 10px;
+  padding: 0px 5px;
+}
+
+.message_wrapper img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.message_wrapper p {
+  padding: 10px 10px 10px;
+  display: inline-block;
+  max-width: 60%;
+  text-align: left;
+  border-radius: 20px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.message_wrapper2 {
+  padding: 10px 10px 10px;
+  margin: 100px;
+}
+
+.message_wrapper span {
+  display: inline-block;
+  font-size: 16px;
+}
+
+.message_wrapper small {
+  display: inline-block;
+  font-size: 10px;
+}
+
+.message_wrapper.own {
+  text-align: right;
+}
+
+.moment_containerI {
+  text-align: right;
+  opacity: 0.6;
+  margin-bottom: 10px;
+}
+.moment_containerYou {
+  text-align: left;
+  opacity: 0.6;
+  margin-bottom: 10px;
+}
+
+.me {
+  background-color: rgba(25, 118, 210, 0.3);
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0;
+  cursor: pointer;
+
+  a {
+    color: white;
+  }
+}
+
+.friend {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0;
+
+  a {
+    color: white;
+  }
+}

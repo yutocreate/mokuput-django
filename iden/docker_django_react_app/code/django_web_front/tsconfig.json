@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve"
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "firebase/firebase.ts",
+    "functions/lib/index.js",
+    "functions/index.js",
+    "components/SearchUsers.js",
+    "pages/home.jsx",
+    "pages/_app.tsx",
+    "components/organism/user/UserDetailModal.jsx",
+    "pages/signup.tsx",
+    "pages/signin.jsx",
+    "components/Header.tsx",
+    "pages/signup/[id].tsx",
+    "pages/chat/[uid]/[id].jsx",
+    "components/home/MessageHome.jsx",
+    "components/NoAuthUser/NoAuthUserButton.jsx",
+    "components/NoAuthUser/NoAuthUser.jsx"
+  ],
+  "exclude": ["node_modules"]
+}

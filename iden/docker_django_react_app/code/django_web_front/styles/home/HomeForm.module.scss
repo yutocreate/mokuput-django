@@ -1,0 +1,95 @@
+.message_form_container {
+  display: flex;
+  justify-content: center;
+}
+
+.message_form {
+  position: fixed;
+  display: grid;
+  grid-template-columns: 1fr 1fr 16fr 1fr;
+  justify-content: center;
+  bottom: 12px;
+  min-height: 70px;
+  align-items: center;
+
+  .image_container {
+    width: 36px;
+  }
+}
+
+.input_text {
+  width: 100%;
+  padding: 6px 16px 0;
+  border-radius: 8px;
+  border-color: rgb(107, 201, 251);
+}
+
+.emojiIcon_wrapper {
+  width: 100%;
+  margin-left: 6px;
+
+  .emojiIcon {
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.button_container {
+  border: none;
+  background-color: white;
+  padding: 0;
+}
+
+.sendButton {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.subText {
+  position: relative;
+  top: 170px;
+  left: 60px;
+  bottom: 0;
+  font-size: 11px;
+  font-weight: 300;
+  height: 12px;
+}
+
+.subText2 {
+  position: relative;
+  top: 170px;
+  left: 80px;
+  bottom: 0;
+  font-size: 10px;
+  font-weight: 300;
+  height: 12px;
+}
+
+.emoji_container {
+  position: absolute;
+  z-index: 10;
+  width: 280px;
+  height: 320px;
+  bottom: 120px;
+  right: 20px;
+}
+
+.emoji_hidden {
+  display: none;
+}
+
+@media screen and (max-width: 680px) {
+  .message_form {
+    bottom: 6px;
+  }
+  .subText {
+    display: none;
+  }
+
+  .subText2 {
+    display: none;
+  }
+}
