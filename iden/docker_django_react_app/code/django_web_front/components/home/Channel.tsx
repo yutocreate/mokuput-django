@@ -4,7 +4,7 @@ import ComputerIcon from "@mui/icons-material/Computer";
 
 interface Props {
   channel: {
-    id: string;
+    documentId: string;
     name: string;
   };
   selectedChannel: (channel) => void;
@@ -13,7 +13,6 @@ interface Props {
 const Channel: React.FC<Props> = (props) => {
   const { channel, selectedChannel } = props;
 
-  console.log(channel);
   return (
     <>
       <div

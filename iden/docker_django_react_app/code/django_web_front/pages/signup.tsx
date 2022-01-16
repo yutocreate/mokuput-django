@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { db, signupWithEmailAndPassword } from "../firebase/firebase";
 import firebase from "firebase/app";
 import Link from "next/link";
-import axios from "axios";
 
 import classes from "../styles/signup/signup.module.scss";
 import Box from "@mui/material/Box";
@@ -49,10 +48,11 @@ const Signup = () => {
       e.preventDefault();
 
       //サインアップしたユーザーにメールを送る
-      // const user = await signupWithEmailAndPassword(email, password);
-      // const newUserId = user.user.uid;
-
-      await databaseAdd();
+      const user = await signupWithEmailAndPassword(email, password);
+      const newUserId = user.user.uid;
+      await firestoreAdd(newUserId);
+      //サインアップしたユーザーが入れば、ユーザー詳細ページに飛ばす
+      (await user) && Router.push(`/signup/${newUserId}`);
 
       setEmail("");
       setPassword("");
@@ -64,21 +64,14 @@ const Signup = () => {
     }
   };
 
-  //サインアップ時にdatabaseにデータを保存する処理
-  const databaseAdd = () => {
-    // db.collection("users").doc(id).set({
-    //   email: email,
-    //   createdAt: firebase.firestore.Timestamp.now(),
-    //   isOnline: true,
-    //   password: password,
-    // });
-    axios.post("http://localhost:8000/admin/webapi/profile/", {
+  //サインアップ時にfirestoreにデータを保存する処理
+  const firestoreAdd = (id) => {
+    db.collection("users").doc(id).set({
       email: email,
+      createdAt: firebase.firestore.Timestamp.now(),
       isOnline: true,
       password: password,
     });
-    //サインアップしたユーザーが入れば、ユーザー詳細ページに飛ばす
-    // Router.push(`/signup/${newUserId}`);
   };
 
   return (

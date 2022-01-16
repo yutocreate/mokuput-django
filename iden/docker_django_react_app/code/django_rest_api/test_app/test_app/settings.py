@@ -74,22 +74,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'test_app.wsgi.application'
 
-REST_FRAMEWORK = {
-    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-        # TEST時のみapi直叩きの許可
-        # 'rest_framework.permissions.AllowAny',
-    ),
-    'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.JSONRenderer',
-        # TEST時のみブラウザでAPI操作許可
-        # 'rest_framework.renderers.BrowsableAPIRenderer',
-    ),
-    'DEFAULT_PARSER_CLASSES': [
-        'rest_framework.parsers.JSONParser',
-    ],
-}
+# REST_FRAMEWORK = {
+#     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+#     'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.IsAuthenticated',
+#         # TEST時のみapi直叩きの許可
+#         # 'rest_framework.permissions.AllowAny',
+#     ),
+#     'DEFAULT_RENDERER_CLASSES': (
+#         'rest_framework.renderers.JSONRenderer',
+#         # TEST時のみブラウザでAPI操作許可
+#         # 'rest_framework.renderers.BrowsableAPIRenderer',
+#     ),
+#     'DEFAULT_PARSER_CLASSES': [
+#         'rest_framework.parsers.JSONParser',
+#     ],
+# }
 
 TOKEN_EXPIRED_AFTER_SECONDS = 86400
 

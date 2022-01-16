@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Header from "../components/Header";
 import SearchUsers from "../components/home/SearchUsers";
 import classes from "../styles/home/home.module.scss";
@@ -12,6 +11,7 @@ import Channel from "../components/home/Channel";
 import Router from "next/router";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import NoAuthUser from "../components/NoAuthUser/NoAuthUser";
+import axios from 'axios'
 
 const ALGOLIA_INDEX_NAME = "study-app";
 const client = algoliasearch("77WZ20O6OE", "60af8ce0883b0f3a5ae5612e6bbf239f");
@@ -24,8 +24,6 @@ const Home = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [openNoAuthUserModal, setOpenNoAuthUserModal] = useState(false);
 
-  console.log(channels);
-
   useEffect(() => {
     // db.collection("channels").onSnapshot((snapshot) => {
     //   const names = [];
@@ -34,9 +32,11 @@ const Home = () => {
     //   });
     //   setChannels(names);
     // });
-    axios.get("http://localhost:8000/channel/").then((res) => {
-      setChannels(res.data);
-    });
+
+    axios.get('http://localhost:8000/channel/').then(res => {
+      setChannels(res.data)
+    })
+
   }, []);
 
   const onSearch = async (e) => {
@@ -64,22 +64,17 @@ const Home = () => {
   };
 
   const addChannel = () => {
-    const channelName = window.prompt("チャンネル名を入力してください!");
-    // if (channelName) {
-    //   db.collection("channels").add({
-    //     name: channelName,
-    //   });
-    // }
+    const channelName = window.prompt("チャンネル名を入力してください！");
     if (channelName) {
-      axios
-        .post("http://localhost:8000/channel/", { name: channelName })
-        .then((res) => setChannels([...channels, res.data]));
+      db.collection("channels").add({
+        name: channelName,
+      });
     }
   };
 
   //チャンネルを選択した時の挙動
   const selectedChannel = async (channel) => {
-    await Router.push(`/home/${channel.id}`);
+    await Router.push(`/home/${channel.documentId}`);
   };
 
   const HandleOpenNoAuthUserModal = (e) => {

@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ["next", "next/core-web-vitals", "prettier", "next/babel"],
+    "extends": ["next", "next/core-web-vitals", "prettier", "next/babel"],
   rules: {
     semi: "error",
     "import/prefer-default-export": "off",
