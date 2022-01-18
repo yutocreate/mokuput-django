@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { db, signupWithEmailAndPassword } from "../firebase/firebase";
 import firebase from "firebase/app";
 import Link from "next/link";
-
+import axios from "axios";
 import classes from "../styles/signup/signup.module.scss";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
@@ -44,34 +44,47 @@ const Signup = () => {
   //formタグのEnterを押した時の処理
   const handleSignup = async (e) => {
     //サインアップが成功した場合
-    try {
-      e.preventDefault();
 
-      //サインアップしたユーザーにメールを送る
-      const user = await signupWithEmailAndPassword(email, password);
-      const newUserId = user.user.uid;
-      await firestoreAdd(newUserId);
-      //サインアップしたユーザーが入れば、ユーザー詳細ページに飛ばす
-      (await user) && Router.push(`/signup/${newUserId}`);
+    e.preventDefault();
 
-      setEmail("");
-      setPassword("");
-    } catch {
-      //サインアップが失敗した場合
+    //サインアップしたユーザーにメールを送る
+    // const user = await signupWithEmailAndPassword(email, password);
+    // const newUserId = user.user.uid;
 
-      setEmail("");
-      setPassword("");
-    }
+    await firestoreAdd();
+
+    //サインアップしたユーザーが入れば、ユーザー詳細ページに飛ばす
+    // Router.push(`/signup/${newUserId}`);
+
+    // setEmail("");
+    // setPassword("");
   };
 
   //サインアップ時にfirestoreにデータを保存する処理
-  const firestoreAdd = (id) => {
-    db.collection("users").doc(id).set({
-      email: email,
-      createdAt: firebase.firestore.Timestamp.now(),
-      isOnline: true,
-      password: password,
-    });
+
+  const firestoreAdd = () => {
+    // db.collection("users").doc(id).set({
+    //   email: email,
+    //   createdAt: firebase.firestore.Timestamp.now(),
+    //   isOnline: true,
+    //   password: password,
+    // });
+
+    console.log("sa");
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const body = JSON.stringify({ email, password });
+
+    axios
+      .post("http://localhost:8000/user/signup/", body, config)
+      .then((res) => {
+        console.log(res.data);
+      });
   };
 
   return (
@@ -79,7 +92,7 @@ const Signup = () => {
       <h1 className={classes.app_title}>ようこそ&nbsp;MOKUPUT&nbsp;へ</h1>
       <Box className={classes.form_wrapper}>
         <h2>切磋琢磨できる仲間を見つけて、一緒に高め合おう！</h2>
-        <form onSubmit={handleSignup}>
+        <form method="POST" onSubmit={handleSignup}>
           <div className={classes.form}>
             <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
               <InputLabel htmlFor="outlined-adornment-password">

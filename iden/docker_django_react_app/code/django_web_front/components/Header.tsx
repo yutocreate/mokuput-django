@@ -97,7 +97,7 @@ interface Props {
 
 const Header: React.FC<Props> = (props) => {
   const { onSearch, setSearchUsers, searchText, setSearchText } = props;
-  const { user } = useContext(AuthContext);
+  const  user  = useContext(AuthContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedName, setSelectedName] = useState<string>("");
   const [selectedExperience, setSelectedExperience] = useState<string>();

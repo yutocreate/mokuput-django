@@ -2,7 +2,9 @@ import React, { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase";
 import Loading from "../components/Loading";
 
-export const AuthContext = createContext();
+const AuthContext = createContext();
+
+export {AuthContext}
 
 const AuthProvider = (props) => {
   const { children } = props;

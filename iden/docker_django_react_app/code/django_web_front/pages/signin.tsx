@@ -11,6 +11,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import axios from "axios";
 
 interface valuesType {
   password: string;
@@ -24,6 +25,9 @@ const Signin: React.FC = () => {
     password: "",
     showPassword: false,
   });
+
+  console.log(email);
+  console.log(password);
 
   //クリックすることで打ったパスワードが表示される
   const handleClickShowPassword = () => {
@@ -40,12 +44,26 @@ const Signin: React.FC = () => {
 
   const handleSignin = async (e) => {
     e.preventDefault();
-    const result = await signinWithEmailAndPassword(email, password);
-    await db
-      .collection("users")
-      .doc(result.user.uid)
-      .update({ isOnline: true });
-    (await result) && Router.push("/home/3fSVoNmwFQWi9zYg63Fw");
+    // const result = await signinWithEmailAndPassword(email, password);
+    // await db
+    //   .collection("users")
+    //   .doc(result.user.uid)
+    //   .update({ isOnline: true });
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const body = JSON.stringify({ email, password });
+
+    await axios
+      .post("http://localhost:8000/login/", body, config)
+      .then((res) => {
+        console.log(res.data);
+      });
+
+    // Router.push("/home/3fSVoNmwFQWi9zYg63Fw");
   };
 
   return (
