@@ -40,8 +40,12 @@ INSTALLED_APPS = [
     'webapi',
     'user',
     'rest_framework',
+    'rest_framework_jwt',
     'corsheaders',
 ]
+
+# AUTH_USER_MODEL = 'user.User'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -52,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'test_app.urls'
@@ -74,24 +79,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'test_app.wsgi.application'
 
-# REST_FRAMEWORK = {
-#     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
-#     'DEFAULT_PERMISSION_CLASSES': (
-#         'rest_framework.permissions.IsAuthenticated',
-#         # TEST時のみapi直叩きの許可
-#         # 'rest_framework.permissions.AllowAny',
-#     ),
-#     'DEFAULT_RENDERER_CLASSES': (
-#         'rest_framework.renderers.JSONRenderer',
-#         # TEST時のみブラウザでAPI操作許可
-#         # 'rest_framework.renderers.BrowsableAPIRenderer',
-#     ),
-#     'DEFAULT_PARSER_CLASSES': [
-#         'rest_framework.parsers.JSONParser',
-#     ],
-# }
+JWT_AUTH = {
+    'JWT_VERIFY_EXPIRATION': False,
+    'JWT_AUTH_HEADER_PREFIX': 'JWT',
+}
 
-TOKEN_EXPIRED_AFTER_SECONDS = 86400
+REST_FRAMEWORK = {
+    # 'DEFAULT_PERMISSION_CLASSES': (
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
 
 
 # Database
@@ -99,12 +101,12 @@ TOKEN_EXPIRED_AFTER_SECONDS = 86400
 
 DATABASES = {
     'default': {
-    'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'test_app',
-    'USER': 'postgres',
-    'HOST': 'db',
-    'PORT': 5432,
-  }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'test_app',
+        'USER': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
+    }
 }
 
 
@@ -151,3 +153,5 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:3000/',
     'localhost:3000',
 )
+
+AUTH_USER_MODEL = "user.Account"

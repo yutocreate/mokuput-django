@@ -11,7 +11,7 @@ import Channel from "../components/home/Channel";
 import Router from "next/router";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import NoAuthUser from "../components/NoAuthUser/NoAuthUser";
-import axios from 'axios'
+import axios from "axios";
 
 const ALGOLIA_INDEX_NAME = "study-app";
 const client = algoliasearch("77WZ20O6OE", "60af8ce0883b0f3a5ae5612e6bbf239f");
@@ -33,10 +33,9 @@ const Home = () => {
     //   setChannels(names);
     // });
 
-    axios.get('http://localhost:8000/channel/').then(res => {
-      setChannels(res.data)
-    })
-
+    axios.get("http://localhost:8000/channel/").then((res) => {
+      setChannels(res.data);
+    });
   }, []);
 
   const onSearch = async (e) => {
@@ -66,18 +65,26 @@ const Home = () => {
   const addChannel = () => {
     const channelName = window.prompt("チャンネル名を入力してください！");
     if (channelName) {
-      db.collection("channels").add({
-        name: channelName,
-      });
+      // db.collection("channels").add({
+      //   name: channelName,
+      // });
+
+      axios
+        .post("http://localhost:8000/channel/", {
+          name: channelName,
+        })
+        .then((res) => {
+          setChannels([...channels, res.data]);
+        });
     }
   };
 
   //チャンネルを選択した時の挙動
   const selectedChannel = async (channel) => {
-    await Router.push(`/home/${channel.documentId}`);
+    await Router.push(`/home/${channel.id}`);
   };
 
-  const HandleOpenNoAuthUserModal = (e) => {
+  const HandleOpenNoAuthUserModal = () => {
     setOpenNoAuthUserModal(true);
   };
   const HandleCloseNoAuthUserModal = () => setOpenNoAuthUserModal(false);
